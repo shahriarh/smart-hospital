@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Patient;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Appointment */
@@ -11,8 +12,14 @@ use yii\widgets\ActiveForm;
 <div class="appointment-form">
 
     <?php $form = ActiveForm::begin(); ?>
+	
 
     <?= $form->field($model, 'patient_id')->textInput() ?>
+	<?php echo $form->field($model, "[patient_id")->dropdownList(
+	  Patient::find()->select(['name', 'id'])->asArray()->indexBy('id')->column(),
+	  ['prompt'=>'Select Patient']
+	  );
+	 ?>
 
     <?= $form->field($model, 'department_id')->textInput() ?>
 
