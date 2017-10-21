@@ -49,6 +49,23 @@ $config = [
         */
     ],
     'params' => $params,
+	'modules' => [
+		//your another module
+		  'gridview' => [
+			  'class' => '\kartik\grid\Module',
+			  // see settings on http://demos.krajee.com/grid#module
+		  ],
+		  'datecontrol' => [
+			  'class' => '\kartik\datecontrol\Module',
+			  // see settings on http://demos.krajee.com/datecontrol#module
+		  ],
+		  // If you use tree table
+		  'treemanager' =>  [
+			  'class' => '\kartik\tree\Module',
+			  // see settings on http://demos.krajee.com/tree-manager#module
+		  ]
+		// your another module
+		],
 ];
 
 if (YII_ENV_DEV) {
