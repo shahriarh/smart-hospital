@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Department;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Doctors */
@@ -15,6 +16,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'department_id')->textInput() ?>
+	<?php echo $form->field($model, "assigned_department")->dropdownList(
+		Department::find()->select(['name', 'id'])->asArray()->indexBy('id')->column(),
+		['prompt'=>'Select Department']
+		);
+	 
+	?>
 
     <?= $form->field($model, 'designation')->textInput(['maxlength' => true]) ?>
 
