@@ -1,52 +1,28 @@
 <?php
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+			<div class="col-md-4">
+				<a href="<?=Url::to(['/patient']) ?>" class="btn btn-primary">Patient</a>
+				<a href="<?=Url::to(['/appointment']) ?>" class="btn btn-primary">Appointment</a>
+				<a href="<?=Url::to(['/patient-diagnosis']) ?>" class="btn btn-primary">Patient Diagnosis</a>
+			</div>
+			<div class="col-md-4">
+				<a href="<?=Url::to(['/common-diseases']) ?>" class="btn btn-primary">Common Diseases</a>
+				<a href="<?=Url::to(['/department']) ?>" class="btn btn-primary">Department</a>
+				<a href="<?=Url::to(['/diagnosis']) ?>" class="btn btn-primary">Diagnosis</a>
+			</div>
+			<div class="col-md-4">
+				<a href="<?=Url::to(['/doctors']) ?>" class="btn btn-primary">Doctors</a>
+				<a href="<?=Url::to(['/prescription']) ?>" class="btn btn-primary">Prescription</a>
+			</div>
         </div>
 
     </div>
