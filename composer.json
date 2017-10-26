@@ -21,7 +21,8 @@
         "mootensai/yii2-enhanced-gii": "dev-master",
 		"kartik-v/yii2-mpdf": "dev-master",
 		"kartik-v/yii2-tree-manager": "dev-master",
-        "dektrium/yii2-user": "^0.9.12"
+        "dektrium/yii2-user": "^0.9.12",
+        "dektrium/yii2-rbac": "1.0.0-alpha@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

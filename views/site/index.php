@@ -7,23 +7,22 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="body-content">
-
-        <div class="row">
-			<div class="col-md-4">
-				<a href="<?=Url::to(['/patient']) ?>" class="btn btn-primary">Patient</a>
-				<a href="<?=Url::to(['/appointment']) ?>" class="btn btn-primary">Appointment</a>
-				<a href="<?=Url::to(['/patient-diagnosis']) ?>" class="btn btn-primary">Patient Diagnosis</a>
+		<div class="jumbotron">
+			<h1>Welcome to Smart Hospital!</h1>
+			<div class="row">
+			<br>
+			<br>
+				<div class="col-md-6">
+					<a class="btn btn-success btn-sm btn-block" href="<?=Url::to(['/user/security/login']) ?>" role="button">Login</a>
+					<br>
+					<p class="text-muted">If you are a returning patient, please login</p>
+				</div>
+				<div class="col-md-6">
+					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/user/register']) ?>" role="button">Register</a>
+					<br>
+					<p class="text-muted">If you are a new patient, please register</p>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<a href="<?=Url::to(['/common-diseases']) ?>" class="btn btn-primary">Common Diseases</a>
-				<a href="<?=Url::to(['/department']) ?>" class="btn btn-primary">Department</a>
-				<a href="<?=Url::to(['/diagnosis']) ?>" class="btn btn-primary">Diagnosis</a>
-			</div>
-			<div class="col-md-4">
-				<a href="<?=Url::to(['/doctors']) ?>" class="btn btn-primary">Doctors</a>
-				<a href="<?=Url::to(['/prescription']) ?>" class="btn btn-primary">Prescription</a>
-			</div>
-        </div>
-
+		</div>
     </div>
 </div>

@@ -36,7 +36,7 @@ class Appointment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_id', 'department_id', 'disease_id', 'details'], 'required'],
+            [['patient_id', 'disease_id', 'details'], 'required'],
             [['patient_id', 'department_id', 'disease_id'], 'integer'],
             [['details'], 'string'],
             [['created_at', 'updated_at'], 'safe'],

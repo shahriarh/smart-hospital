@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Patient */
 /* @var $form yii\widgets\ActiveForm */
+$model->id = Yii::$app->user->id;
 ?>
 
 <div class="patient-form">
@@ -18,6 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nid')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'id')->hiddenInput()->label(false) ?>
+	
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

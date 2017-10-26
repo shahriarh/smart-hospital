@@ -24,18 +24,41 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'patient_id',
-            'department_id',
-            'disease_id',
-            'details:ntext',
-            'created_at',
-            'updated_at',
-        ],
-    ]) ?>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Appointment Details</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr>
+                    <th>Appointment Number</th>
+                    <td><?=$model->id ?></td>
+                </tr>
+                <tr>
+                    <th>Patient Name</th>
+                    <td><?=$model->patient['name'] ?></td>
+                </tr>
+                <tr>
+                    <th>Department</th>
+                    <td><?=$model->department['name'] ?></td>
+                </tr>
+                <tr>
+                    <th>Disease</th>
+                    <td><?=$model->disease['name'] ?></td>
+                </tr>
+                <tr>
+                    <th>Details</th>
+                    <td><?=$model->details ?></td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td><?=$model->created_at ?></td>
+                </tr>
+                    <th>Updated At</th>
+                    <td><?=$model->updated_at ?></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
 </div>

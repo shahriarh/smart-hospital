@@ -65,7 +65,10 @@ class AppointmentController extends Controller
     {
         $model = new Appointment();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+			$department_id = \app\models\CommonDiseases::findOne($model->disease_id);
+			$model->department_id = $department_id->id;
+			$model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

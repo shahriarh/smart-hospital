@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef94ddbdc91dd25efcba8638427e4aeb",
+    "content-hash": "5e2835e2132c3f71d8ea87132ecfd07a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -365,6 +365,59 @@
                 "yii2"
             ],
             "time": "2015-01-27T10:53:51+00:00"
+        },
+        {
+            "name": "dektrium/yii2-rbac",
+            "version": "1.0.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dektrium/yii2-rbac.git",
+                "reference": "0943e66c450132b306584a37caefc2aa04258372"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dektrium/yii2-rbac/zipball/0943e66c450132b306584a37caefc2aa04258372",
+                "reference": "0943e66c450132b306584a37caefc2aa04258372",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-widget-select2": "^2.0",
+                "yiisoft/yii2": "^2.0.8"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "dektrium\\rbac\\Bootstrap",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dektrium\\rbac\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Erofeev",
+                    "email": "dmeroff@gmail.com",
+                    "homepage": "http://dmeroff.ru"
+                }
+            ],
+            "description": "RBAC management module for Yii2",
+            "keywords": [
+                "dektrium",
+                "rbac gui",
+                "rbac management",
+                "rbac module",
+                "yii rbac",
+                "yii2",
+                "yii2-rbac"
+            ],
+            "time": "2016-08-15T15:49:54+00:00"
         },
         {
             "name": "dektrium/yii2-user",
@@ -766,16 +819,16 @@
         },
         {
             "name": "kartik-v/yii2-dynagrid",
-            "version": "v1.4.6",
+            "version": "v1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-dynagrid.git",
-                "reference": "d1a65dcc4eaec89188de28aceeeda71c9e41e1a6"
+                "reference": "1e12d8bf411b314018512e067fafd449f683ce38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/d1a65dcc4eaec89188de28aceeeda71c9e41e1a6",
-                "reference": "d1a65dcc4eaec89188de28aceeeda71c9e41e1a6",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/1e12d8bf411b314018512e067fafd449f683ce38",
+                "reference": "1e12d8bf411b314018512e067fafd449f683ce38",
                 "shasum": ""
             },
             "require": {
@@ -822,23 +875,24 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-09-15T04:57:24+00:00"
+            "time": "2017-10-23T14:02:31+00:00"
         },
         {
             "name": "kartik-v/yii2-export",
-            "version": "v1.2.6",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-export.git",
-                "reference": "c6cd40cde50bbefcf089ab22b0623f6e61c0cf07"
+                "reference": "4862c52f9190e2e199d4490ee8a6b24d3c7947f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/c6cd40cde50bbefcf089ab22b0623f6e61c0cf07",
-                "reference": "c6cd40cde50bbefcf089ab22b0623f6e61c0cf07",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/4862c52f9190e2e199d4490ee8a6b24d3c7947f5",
+                "reference": "4862c52f9190e2e199d4490ee8a6b24d3c7947f5",
                 "shasum": ""
             },
             "require": {
+                "kartik-v/yii2-dialog": "~1.0.0",
                 "kartik-v/yii2-dynagrid": ">=1.4.5",
                 "phpoffice/phpexcel": "~1.8.0"
             },
@@ -881,24 +935,28 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2016-08-05T05:35:51+00:00"
+            "time": "2017-03-13T06:21:23+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
-            "version": "v3.1.1",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "fe29bcf8f46bde42aa3eb067851b38dc07cd4d8a"
+                "reference": "b74e17902f99fb52c26cee678567b53f12eb8f7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/fe29bcf8f46bde42aa3eb067851b38dc07cd4d8a",
-                "reference": "fe29bcf8f46bde42aa3eb067851b38dc07cd4d8a",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/b74e17902f99fb52c26cee678567b53f12eb8f7b",
+                "reference": "b74e17902f99fb52c26cee678567b53f12eb8f7b",
                 "shasum": ""
             },
             "require": {
+                "kartik-v/yii2-dialog": "~1.0",
                 "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "suggest": {
+                "kartik-v/yii2-mpdf": "For exporting grids to PDF"
             },
             "type": "yii2-extension",
             "extra": {
@@ -930,7 +988,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-09T20:31:20+00:00"
+            "time": "2017-10-22T17:25:19+00:00"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -3570,37 +3628,40 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
-                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
+                "reference": "3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
-                }
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
             "keywords": [
                 "clone",
                 "copy",
@@ -3608,7 +3669,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-04-12T18:52:22+00:00"
+            "time": "2017-10-19T19:58:43+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5766,7 +5827,8 @@
     "stability-flags": {
         "mootensai/yii2-enhanced-gii": 20,
         "kartik-v/yii2-mpdf": 20,
-        "kartik-v/yii2-tree-manager": 20
+        "kartik-v/yii2-tree-manager": 20,
+        "dektrium/yii2-rbac": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

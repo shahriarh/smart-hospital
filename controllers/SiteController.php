@@ -9,6 +9,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\patient;
+use app\models\Appointment;
+
 
 class SiteController extends Controller
 {
@@ -61,7 +64,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+			return $this->render('index');
+		} elseif(yii::$app->user->can('doctor')){
+			
+			$patient = Patient::findOne(Yii::$app->user->id);
+			$Appointment = Appointment::find(Yii::$app->user->id)->all();
+			
+			return $this->render('index-logged-in', [
+				'patient' => $patient,
+				'appointment' => $Appointment,
+			]);
+		}
     }
 
     /**

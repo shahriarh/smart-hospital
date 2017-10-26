@@ -14,11 +14,11 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ],
+        ],/* 
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
+        ], */
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -39,39 +39,46 @@ $config = [
             ],
         ],
         'db' => $db,
-         'urlManager' => [
-   'class' => 'yii\web\UrlManager',
-   // Disable index.php
-   'showScriptName' => false,
-   // Disable r= routes
-   'enablePrettyUrl' => true,
-   'rules' => array(
-     '<controller:\w+>/<id:\d+>' => '<controller>/view',
-     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-     //'<alias:register>' => 'user/registration/<alias>',
-     //'<alias:logout|login>' => 'user/security/<alias>'
-   ),
-  ],
+		'urlManager' => [
+			'class' => 'yii\web\UrlManager',
+			// Disable index.php
+			'showScriptName' => false,
+			// Disable r= routes
+			'enablePrettyUrl' => true,
+			'rules' => array(
+			 '<controller:\w+>/<id:\d+>' => '<controller>/view',
+			 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+			 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+			 //'<alias:register>' => 'user/registration/<alias>',
+			 //'<alias:logout|login>' => 'user/security/<alias>'
+			),
+		],
     ],
     'params' => $params,
 	'modules' => [
-		//your another module
-		  'gridview' => [
-			  'class' => '\kartik\grid\Module',
-			  // see settings on http://demos.krajee.com/grid#module
-		  ],
-		  'datecontrol' => [
-			  'class' => '\kartik\datecontrol\Module',
-			  // see settings on http://demos.krajee.com/datecontrol#module
-		  ],
-		  // If you use tree table
-		  'treemanager' =>  [
-			  'class' => '\kartik\tree\Module',
-			  // see settings on http://demos.krajee.com/tree-manager#module
-		  ]
-		// your another module
+		'user' =>[
+			'class' => 'dektrium\user\Module',
+			'enableUnconfirmedLogin' => true,
+			'confirmWithin' => 21600,
+			'cost' => 12,
+			'admins' => ['admin']
 		],
+		'rbac' => 'dektrium\rbac\RbacWebModule',
+		//your another module
+		'gridview' => [
+			'class' => '\kartik\grid\Module',
+		// see settings on http://demos.krajee.com/grid#module
+		],
+		'datecontrol' => [
+			'class' => '\kartik\datecontrol\Module',
+		// see settings on http://demos.krajee.com/datecontrol#module
+		],
+		// If you use tree table
+		'treemanager' =>  [
+			'class' => '\kartik\tree\Module',
+		// see settings on http://demos.krajee.com/tree-manager#module
+		],
+	],
 ];
 
 if (YII_ENV_DEV) {

@@ -19,7 +19,6 @@ use app\models\Department;
 
     <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'assigned_department')->textInput() ?>
 	<?php echo $form->field($model, "assigned_department")->dropdownList(
 		Department::find()->select(['name', 'id'])->asArray()->indexBy('id')->column(),
 		['prompt'=>'Select Department']

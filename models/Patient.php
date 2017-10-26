@@ -36,6 +36,7 @@ class Patient extends \yii\db\ActiveRecord
             [['age'], 'integer'],
             [['name'], 'string', 'max' => 100],
             [['nid'], 'string', 'max' => 200],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Patient::className(), 'targetAttribute' => ['id' => 'id']],
         ];
     }
 
