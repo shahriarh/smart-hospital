@@ -9,9 +9,11 @@ use Yii;
  *
  * @property integer $appointment_id
  * @property integer $patient_id
+ * @property integer $doctor_id
  * @property string $diseases
  * @property string $Rx
  * @property string $indication
+ * @property string $investigation
  * @property string $advices
  * @property string $first_visit_date
  * @property string $revisit_date
@@ -19,6 +21,7 @@ use Yii;
  * @property PatientDiagnosis[] $patientDiagnoses
  * @property Appointment $appointment
  * @property Patient $patient
+ * @property Doctors $doctor
  */
 class Prescription extends \yii\db\ActiveRecord
 {
@@ -37,11 +40,12 @@ class Prescription extends \yii\db\ActiveRecord
     {
         return [
             [['appointment_id', 'patient_id', 'diseases'], 'required'],
-            [['appointment_id', 'patient_id'], 'integer'],
-            [['diseases', 'Rx', 'indication', 'advices'], 'string'],
+            [['appointment_id', 'patient_id', 'doctor_id'], 'integer'],
+            [['diseases', 'Rx', 'indication', 'investigation', 'advices'], 'string'],
             [['first_visit_date', 'revisit_date'], 'safe'],
             [['appointment_id'], 'exist', 'skipOnError' => true, 'targetClass' => Appointment::className(), 'targetAttribute' => ['appointment_id' => 'id']],
             [['patient_id'], 'exist', 'skipOnError' => true, 'targetClass' => Patient::className(), 'targetAttribute' => ['patient_id' => 'id']],
+            [['doctor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Doctors::className(), 'targetAttribute' => ['doctor_id' => 'id']],
         ];
     }
 
@@ -53,9 +57,11 @@ class Prescription extends \yii\db\ActiveRecord
         return [
             'appointment_id' => 'Appointment ID',
             'patient_id' => 'Patient ID',
+            'doctor_id' => 'Doctor ID',
             'diseases' => 'Diseases',
             'Rx' => 'Rx',
             'indication' => 'Indication',
+            'investigation' => 'Investigation',
             'advices' => 'Advices',
             'first_visit_date' => 'First Visit Date',
             'revisit_date' => 'Revisit Date',
@@ -84,6 +90,14 @@ class Prescription extends \yii\db\ActiveRecord
     public function getPatient()
     {
         return $this->hasOne(Patient::className(), ['id' => 'patient_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDoctor()
+    {
+        return $this->hasOne(Doctors::className(), ['id' => 'doctor_id']);
     }
 
     /**

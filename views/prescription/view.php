@@ -15,7 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+    <?php if(Yii::$app->user->can('doctor')): ?>
         <?= Html::a('Update', ['update', 'id' => $model->appointment_id], ['class' => 'btn btn-primary']) ?>
+    <?php endif; ?>
+    <?php if(Yii::$app->user->can('admin')): ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->appointment_id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -23,13 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+    <?php endif; ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'appointment_id',
-            'patient_id',
+            'doctor.name',
+            'patient.name',
+            'patient.age',
             'diseases:ntext',
             'Rx:ntext',
             'indication:ntext',

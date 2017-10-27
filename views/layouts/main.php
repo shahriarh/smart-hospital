@@ -38,9 +38,6 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Patient', 'url' => ['/patient']],
-            ['label' => 'Appointment', 'url' => ['/appointment']],
-            ['label' => 'Prescription', 'url' => ['/prescription']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
 			Yii::$app->user->isGuest ?
 				['label' => 'Sign in', 'url' => ['/user/security/login']] :

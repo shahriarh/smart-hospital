@@ -9,20 +9,21 @@ $this->title = 'Smart Hospital';
     <div class="body-content">
 		<div class="row">
 			<div class="col-md-6">
-				<?php if($patient): ?>
-					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/patient/update/'.$patient->id]) ?>" role="button">Update your information</a>
+				<?php if($doctor): ?>
+					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/doctors/update/'.$doctor->id]) ?>" role="button">Update your information</a>
 					</br>
 					<div class="panel panel-default">
 						<!-- Default panel contents -->
 						<div class="panel-heading">
-							<h3 class="panel-title">Patient  information</h3>
+							<h3 class="panel-title">Doctor information</h3>
 						</div>
 						<div class="panel-body">
 							<!-- List group -->
 							<ul class="list-group">
-								<li class="list-group-item">Name:  <?=$patient->name?> </li>
-								<li class="list-group-item">Age:   <?=$patient->age?></li>
-								<li class="list-group-item">NID:   <?=$patient->nid?></li>
+								<li class="list-group-item"><em class="text-muted">Name:</em> <span class="pull-right"><?=$doctor->name?> </span></li>
+								<li class="list-group-item"><em class="text-muted">Department:</em> <span class="pull-right"><?=$doctor->department['name']?></span></li>
+								<li class="list-group-item"><em class="text-muted">Designation:</em> <span class="pull-right"><?=$doctor->designation?></span></li>
+								<li class="list-group-item"><em class="text-muted">Qualification:</em> <span class="pull-right"><?=$doctor->qualification?></span></li>
 							</ul>
 						</div>
 					</div>
@@ -34,13 +35,12 @@ $this->title = 'Smart Hospital';
 			</div>
 			<div class="col-md-6">
 			<?php if($appointment):?>
-				<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/appointment/create']) ?>" role="button">Request for an Appointment</a>
 				<br>
 			<?php foreach($appointment as $Appointment): ?>
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
-						<h3 class="panel-title">Patient's Appointment Information</h3>
+						<h3 class="panel-title">Doctor's Appointment Information</h3>
 					</div>
 					<div class="panel-body">
 						<!-- List group -->
@@ -48,12 +48,14 @@ $this->title = 'Smart Hospital';
 							<li class="list-group-item"><em class="text-muted">Appointment ID:</em> <span class="pull-right"><?=$Appointment->id ?></span></li>
 							<li class="list-group-item"><em class="text-muted">Department Name:</em> <span class="pull-right"><?=$Appointment->department['name']?></span></li>
 							<li class="list-group-item"><em class="text-muted">Disease:</em> <span class="pull-right"><?=$Appointment->disease['name']?></span></li>
-							<li class="list-group-item"><em class="text-muted">Status:</em> <span class="pull-right"><?=$Appointment->status?></span></li>
+							<li class="list-group-item"><em class="text-muted">Status:</em> <span class="pull-right"><?=$Appointment->status ?></span></li>
 						</ul>
 					</div>
 					<div class="panel-footer">
-					<?php if($Appointment->prescription): ?>
-						<a class="btn btn-success" href="<?=Url::to(['/prescription/view/'.$Appointment->id]) ?>" >View Prescription</a>
+					<?php if ($Appointment->status == 'initial'): ?>
+						<a class="btn btn-success" href="<?=Url::to(['/prescription/create/'.$Appointment->id]) ?>" >Create Prescription</a>
+					<?php else: ?>
+						<a class="btn btn-success" href="<?=Url::to(['/prescription/update/'.$Appointment->id]) ?>" >Update Prescription</a>
 					<?php endif; ?>
 					</div>
 				</div>

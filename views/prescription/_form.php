@@ -12,21 +12,28 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'appointment_id')->textInput() ?>
+    <?= $form->field($model, 'appointment_id')->hiddenInput()->label(false) ?>
+	
+    <?= $form->field($model, 'doctor_id')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'patient_id')->textInput() ?>
+    <?= $form->field($model, 'patient_id')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'diseases')->textarea(['rows' => 6]) ?>
+	
+    <?= $form->field($model, 'investigation')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'Rx')->textarea(['rows' => 6]) ?>
+	
+	
+	<div class="row">
+		<div class="col-md-6">
+			<?= $form->field($model, 'indication')->textarea(['rows' => 6]) ?>
+		</div>
+		<div class="col-md-6">
+			<?= $form->field($model, 'advices')->textarea(['rows' => 6]) ?>
+		</div>	
+	</div>
 
-    <?= $form->field($model, 'indication')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'advices')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'first_visit_date')->textInput() ?>
-
-    <?= $form->field($model, 'revisit_date')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

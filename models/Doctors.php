@@ -13,6 +13,7 @@ use Yii;
  * @property string $designation
  * @property string $qualification
  *
+ * @property Appointment[] $appointments
  * @property Department $department
  */
 class Doctors extends \yii\db\ActiveRecord
@@ -52,6 +53,14 @@ class Doctors extends \yii\db\ActiveRecord
             'designation' => 'Designation',
             'qualification' => 'Qualification',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAppointments()
+    {
+        return $this->hasMany(Appointment::className(), ['doctor_id' => 'id']);
     }
 
     /**

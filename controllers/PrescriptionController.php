@@ -7,6 +7,7 @@ use app\models\Prescription;
 use app\models\PrescriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
 /**
@@ -20,6 +21,25 @@ class PrescriptionController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                    [
+                        'actions' => ['create', 'update'],
+                        'allow' => true,
+                        'roles' => ['doctor'],
+                    ],
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -61,11 +81,19 @@ class PrescriptionController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Prescription();
+        $model->appointment_id = $id;
+		if (Yii::$app->user->can('doctor')) {
+			$model->doctor_id = Yii::$app->user->id;
+		}
+		$appointment = \app\models\Appointment::findOne($id);
+        $model->patient_id = $appointment->patient_id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			$appointment->status = 'prescribed';
+			$appointment->save();
             return $this->redirect(['view', 'id' => $model->appointment_id]);
         } else {
             return $this->render('create', [

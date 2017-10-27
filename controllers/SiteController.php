@@ -11,6 +11,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\patient;
 use app\models\Appointment;
+use app\models\Doctors;
+use app\models\Prescription;
 
 
 class SiteController extends Controller
@@ -64,10 +66,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest) {
+        if (Yii::$app->user->isGuest) { //for guest
 			return $this->render('index');
-		} elseif(yii::$app->user->can('doctor')){
+		} elseif(yii::$app->user->can('doctor')){ //for doctor
+		
+			$doctor = Doctors::find(Yii::$app->user->id)->one();
+			$appointment = Appointment::find($doctor->department_id)->all();
 			
+			return $this->render('index-doctor',[
+				'doctor' => $doctor,
+				'appointment' => $appointment,
+			]);
+		} else { //patient
 			$patient = Patient::findOne(Yii::$app->user->id);
 			$Appointment = Appointment::find(Yii::$app->user->id)->all();
 			
@@ -76,6 +86,7 @@ class SiteController extends Controller
 				'appointment' => $Appointment,
 			]);
 		}
+		
     }
 
     /**

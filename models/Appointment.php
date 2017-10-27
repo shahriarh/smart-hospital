@@ -14,10 +14,12 @@ use Yii;
  * @property string $details
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $doctor_id
  *
  * @property Patient $patient
  * @property Department $department
  * @property CommonDiseases $disease
+ * @property Doctors $doctor
  * @property Prescription $prescription
  */
 class Appointment extends \yii\db\ActiveRecord
@@ -36,13 +38,14 @@ class Appointment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_id', 'disease_id', 'details'], 'required'],
-            [['patient_id', 'department_id', 'disease_id'], 'integer'],
+            [['patient_id', 'department_id', 'disease_id', 'details'], 'required'],
+            [['patient_id', 'department_id', 'disease_id', 'doctor_id'], 'integer'],
             [['details'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['patient_id'], 'exist', 'skipOnError' => true, 'targetClass' => Patient::className(), 'targetAttribute' => ['patient_id' => 'id']],
             [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['department_id' => 'id']],
             [['disease_id'], 'exist', 'skipOnError' => true, 'targetClass' => CommonDiseases::className(), 'targetAttribute' => ['disease_id' => 'id']],
+            [['doctor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Doctors::className(), 'targetAttribute' => ['doctor_id' => 'id']],
         ];
     }
 
@@ -59,6 +62,7 @@ class Appointment extends \yii\db\ActiveRecord
             'details' => 'Details',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'doctor_id' => 'Doctor ID',
         ];
     }
 
@@ -84,6 +88,14 @@ class Appointment extends \yii\db\ActiveRecord
     public function getDisease()
     {
         return $this->hasOne(CommonDiseases::className(), ['id' => 'disease_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDoctor()
+    {
+        return $this->hasOne(Doctors::className(), ['id' => 'doctor_id']);
     }
 
     /**
