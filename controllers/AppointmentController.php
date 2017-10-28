@@ -29,7 +29,7 @@ class AppointmentController extends Controller
                         'roles' => ['admin'],
                     ],
                     [
-                        'actions' => ['create'],
+                        'actions' => ['create', 'update',  'view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -81,8 +81,9 @@ class AppointmentController extends Controller
         $model = new Appointment();
 
         if ($model->load(Yii::$app->request->post())) {
-			$department_id = \app\models\CommonDiseases::findOne($model->disease_id);
-			$model->department_id = $department_id->id;
+            $disease = \app\models\CommonDiseases::findOne($model->disease_id);
+			$department_id = $disease->assigned_department;
+			$model->department_id = $department_id;
 			$model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -102,7 +103,11 @@ class AppointmentController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $disease = \app\models\CommonDiseases::findOne($model->disease_id);
+            $department_id = $disease->assigned_department;
+            $model->department_id = $department_id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

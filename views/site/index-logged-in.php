@@ -33,8 +33,8 @@ $this->title = 'Smart Hospital';
 				<br>
 			</div>
 			<div class="col-md-6">
-			<?php if($appointment):?>
 				<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/appointment/create']) ?>" role="button">Request for an Appointment</a>
+			<?php if($appointment):?>
 				<br>
 			<?php foreach($appointment as $Appointment): ?>
 				<div class="panel panel-default">

@@ -70,8 +70,8 @@ class SiteController extends Controller
 			return $this->render('index');
 		} elseif(yii::$app->user->can('doctor')){ //for doctor
 		
-			$doctor = Doctors::find(Yii::$app->user->id)->one();
-			$appointment = Appointment::find($doctor->department_id)->all();
+			$doctor = Doctors::find()->where(['id' => Yii::$app->user->id])->one();
+			$appointment = Appointment::find()->where(['department_id' => $doctor->department_id])->all();
 			
 			return $this->render('index-doctor',[
 				'doctor' => $doctor,
@@ -79,7 +79,7 @@ class SiteController extends Controller
 			]);
 		} else { //patient
 			$patient = Patient::findOne(Yii::$app->user->id);
-			$Appointment = Appointment::find(Yii::$app->user->id)->all();
+			$Appointment = Appointment::find()->where(['patient_id' => Yii::$app->user->id])->all();
 			
 			return $this->render('index-logged-in', [
 				'patient' => $patient,

@@ -111,6 +111,10 @@ class PrescriptionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+		
+		if (Yii::$app->user->can('doctor')) {
+			$model->doctor_id = Yii::$app->user->id;
+		}
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->appointment_id]);

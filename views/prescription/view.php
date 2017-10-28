@@ -33,10 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'appointment_id',
-            'doctor.name',
-            'patient.name',
+            [
+                'label' => 'Patient Name',
+                'value' => $model->patient->name,
+            ],
             'patient.age',
+            [
+                'label' => 'Doctor Name',
+                'value' => $model->doctor->name,
+            ],
             'diseases:ntext',
+            'investigation:ntext',
             'Rx:ntext',
             'indication:ntext',
             'advices:ntext',

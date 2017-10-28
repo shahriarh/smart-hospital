@@ -32,11 +32,11 @@ class Patient extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'id'], 'required'],
             [['age'], 'integer'],
             [['name'], 'string', 'max' => 100],
             [['nid'], 'string', 'max' => 200],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Patient::className(), 'targetAttribute' => ['id' => 'id']],
+            //[['id'], 'exist', 'skipOnError' => true, 'targetClass' => Patient::className(), 'targetAttribute' => ['id' => 'id']],
         ];
     }
 

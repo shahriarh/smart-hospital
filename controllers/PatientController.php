@@ -34,7 +34,7 @@ class PatientController extends Controller
                         'roles' => ['doctor'],
                     ],
                     [
-                        'actions' => ['create', 'update'],
+                        'actions' => ['create', 'update', 'view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
