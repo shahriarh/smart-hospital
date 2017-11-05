@@ -69,9 +69,13 @@ class SiteController extends Controller
         if (Yii::$app->user->isGuest) { //for guest
 			return $this->render('index');
 		} elseif(yii::$app->user->can('doctor')){ //for doctor
-		
+
+
 			$doctor = Doctors::find()->where(['id' => Yii::$app->user->id])->one();
-			$appointment = Appointment::find()->where(['department_id' => $doctor->department_id])->all();
+            if($doctor){
+                $appointment = Appointment::find()->where(['department_id' => $doctor->department_id])->all();
+            } else
+            $appointment = false;
 			
 			return $this->render('index-doctor',[
 				'doctor' => $doctor,

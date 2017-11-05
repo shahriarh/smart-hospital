@@ -76,9 +76,10 @@ class DoctorsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Doctors();
+        $model->id = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -86,6 +87,24 @@ class DoctorsController extends Controller
             return $this->render('create', [
                 'model' => $model,
             ]);
+        }
+    }
+
+    public function actionCreateorupdate($id){
+        $canDoctor = \Yii::$app->authManager->checkAccess($id, 'doctor');
+        if ($canDoctor){
+
+            if (Doctors::findOne($id)) {
+                $this->redirect(['update', 'id' => $id]);
+            } else
+                $this->redirect(['create', 'id' => $id]);
+
+        } else {
+
+            if (\app\models\Patient::findOne($id)) {
+                $this->redirect(['/patient/update', 'id' => $id]);
+            } else
+                $this->redirect(['/patient/create', 'id' => $id]);
         }
     }
 

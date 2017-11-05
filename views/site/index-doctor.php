@@ -10,7 +10,7 @@ $this->title = 'Smart Hospital';
 		<div class="row">
 			<div class="col-md-6">
 				<?php if($doctor): ?>
-					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/doctors/update/'.$doctor->id]) ?>" role="button">Update your information</a>
+					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/doctors/update/'.$doctor->id]) ?>" role="button">Update your Profile</a>
 					</br>
 					<div class="panel panel-default">
 						<!-- Default panel contents -->
@@ -29,7 +29,7 @@ $this->title = 'Smart Hospital';
 					</div>
 					
 				<?php else: ?>
-					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/patient/create']) ?>" role="button">Update your information</a>
+					<a class="btn btn-primary btn-sm btn-block" href="<?=Url::to(['/doctors/create', 'id' => Yii::$app->user->id]) ?>" role="button">Create your Profile</a>
 				<?php endif; ?>
 				<br>
 			</div>
